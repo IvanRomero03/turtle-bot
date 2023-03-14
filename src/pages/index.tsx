@@ -13,15 +13,18 @@ const Home: NextPage = () => {
   const [svg, setSvg] = useState<string | undefined>(undefined);
   const handleSubmit = async (values: { code: string }) => {
     console.log(values?.code);
-    const response = await axios.post(apiURL, {
+    const response = (await axios.post(apiURL, {
       text: values?.code,
-    });
-
-    console.log(response?.data);
-    if (response?.data?.svg) {
-      console.log(response?.data?.svg);
-      setSvg(response?.data?.svg as string | undefined);
+    })) as { status: number; data: { svg: string; hash?: string } };
+    if (response?.status === 200) {
+      console.log(response?.data);
+      setSvg(response?.data?.svg);
     }
+    console.log(response);
+    // } else if (response?.data?.svg) {
+    //   console.log(response?.data?.svg);
+    //   setSvg(response?.data?.svg as string | undefined);
+    // }
   };
   return (
     <>
