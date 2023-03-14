@@ -5,6 +5,7 @@ import Instructions from "~/components/Instructions/Instructions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import axios from "axios";
+import { type Axios } from "axios";
 
 const apiURL = "http://turtle-backend.vercel.app/api/getSVG/";
 // const apiURL = "http://localhost:8000/";
@@ -13,14 +14,35 @@ const Home: NextPage = () => {
   const [svg, setSvg] = useState<string | undefined>(undefined);
   const handleSubmit = async (values: { code: string }) => {
     console.log(values?.code);
-    const response = (await axios.post(apiURL, {
-      text: values?.code,
-    })) as { status: number; data: { svg: string; hash?: string } };
-    if (response?.status === 200) {
-      console.log(response?.data);
-      setSvg(response?.data?.svg);
+    if (!values?.code) {
+      return;
     }
-    console.log(response);
+    const {
+      data,
+      status,
+    }: { data: { svg: string; hash?: string }; status: number } =
+      await axios.post(apiURL, {
+        text: values?.code,
+      });
+    // const {} = await axios.post(apiURL, {
+    //   text: values?.code,
+    // }); // as { status: number; data: { svg: string; hash?: string } };
+    if (status === 200) {
+      if (data) {
+        if (data?.svg) {
+          setSvg(data?.svg as string | undefined);
+        }
+      }
+    }
+    // if (response?.status === 200) {
+    //   console.log(response?.data);
+    //   if (response?.data) {
+    //     if (response?.data?.svg) {
+    //       setSvg(response?.data?.svg as string | undefined);
+    //     }
+    //   }
+    // }
+    // console.log(response);
     // } else if (response?.data?.svg) {
     //   console.log(response?.data?.svg);
     //   setSvg(response?.data?.svg as string | undefined);
