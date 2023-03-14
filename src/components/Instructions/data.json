@@ -1,0 +1,61 @@
+{
+  "Actions": [
+    {
+      "name": "go",
+      "description": "Avanza una cantidad de pasos determinada",
+      "example": "go 10"
+    },
+    {
+      "name": "gd",
+      "description": "Gira a la derecha una cantidad de grados determinada",
+      "example": "gd 90"
+    },
+    {
+      "name": "gi",
+      "description": "Gira a la izquierda una cantidad de grados determinada",
+      "example": "gi 90"
+    },
+    {
+      "name": "dir",
+      "description": "Cambia la dirección de la tortuga",
+      "example": "dir 90"
+    },
+    {
+      "name": "pa",
+      "description": "Pluma arriba, deja de dibujar los pasos",
+      "example": "pa"
+    },
+    {
+      "name": "pb",
+      "description": "Pluma abajo, dibuja los pasos",
+      "example": "pb"
+    },
+    {
+      "name": "lp",
+      "description": "Limpiar pantalla",
+      "example": "lp"
+    },
+    {
+      "name": "cp",
+      "description": "Centrar la pluma en la pantalla",
+      "example": "cp"
+    },
+    {
+      "name": "cc",
+      "description": "Cambiar el color de la pluma",
+      "example": "cc red"
+    }
+  ],
+  "Logics": [
+    {
+      "name": "rp",
+      "description": "Repite una serie de acciones una cantidad de veces determinada",
+      "example": "rp 10 [go 10 gd 90]"
+    },
+    {
+      "name": "fn",
+      "description": "Define una función con un nombre, un parámetro y una serie de acciones",
+      "example": "fn cuadrado num\ngo num gd 90 go num gd 90 go num gd 90 go num gd 90\nend"
+    }
+  ]
+}
