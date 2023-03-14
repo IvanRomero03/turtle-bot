@@ -11,14 +11,14 @@ const apiURL = "http://turtle-backend.vercel.app/api/getSVG/";
 
 const Home: NextPage = () => {
   const [svg, setSvg] = useState<string | undefined>(undefined);
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: { code: string }) => {
     console.log(values?.code);
     const response = await axios.post(apiURL, {
-      text: values.code,
+      text: values?.code,
     });
 
     console.log(response?.data);
-    setSvg(response?.data?.svg);
+    setSvg(response?.data?.svg as string | undefined);
   };
   return (
     <>
