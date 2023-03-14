@@ -9,12 +9,12 @@ import axios from "axios";
 const Home: NextPage = () => {
   const [svg, setSvg] = useState<string | undefined>(undefined);
   const handleSubmit = async (values: any) => {
-    console.log(values.code);
+    console.log(values?.code);
     // const response = await axios.post("http://turtle-backend.vercel.app/api/", {
     //   text: values.code,
     // });
     const res = await axios.get("http://turtle-backend.vercel.app/api/");
-    console.log(res.data);
+    console.log(res?.data);
 
     // const response = await fetch("http://turtle-backend.vercel.app/api/", {
     //   method: "POST",
@@ -29,8 +29,8 @@ const Home: NextPage = () => {
       text: values.code,
     });
 
-    console.log(response.data);
-    setSvg(response.data.svg);
+    console.log(response?.data);
+    setSvg(response?.data?.svg);
   };
   return (
     <>
