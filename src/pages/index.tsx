@@ -18,7 +18,10 @@ const Home: NextPage = () => {
     });
 
     console.log(response?.data);
-    setSvg(response?.data?.svg as string | undefined);
+    if (response?.data?.svg) {
+      console.log(response?.data?.svg);
+      setSvg(response?.data?.svg as string | undefined);
+    }
   };
   return (
     <>
