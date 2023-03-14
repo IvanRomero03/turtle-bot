@@ -6,26 +6,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import axios from "axios";
 
+const apiURL = "http://turtle-backend.vercel.app/api/getSVG/";
+// const apiURL = "http://localhost:8000/";
+
 const Home: NextPage = () => {
   const [svg, setSvg] = useState<string | undefined>(undefined);
   const handleSubmit = async (values: any) => {
     console.log(values?.code);
-    // const response = await axios.post("http://turtle-backend.vercel.app/api/", {
-    //   text: values.code,
-    // });
-    const res = await axios.get("http://turtle-backend.vercel.app/api/");
-    console.log(res?.data);
-
-    // const response = await fetch("http://turtle-backend.vercel.app/api/", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ text: values.code }),
-    // })
-    //   .then((res) => res.json())
-    //   .catch((err) => console.log(err));
-    const response = await axios.post("http://turtle-backend.vercel.app/api/", {
+    const response = await axios.post(apiURL, {
       text: values.code,
     });
 

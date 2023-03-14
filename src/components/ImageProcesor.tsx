@@ -1,16 +1,21 @@
-import React from "react";
+import { useState } from "react";
 
 interface Props {
   svgLiteral?: string;
 }
 
 const ImageProcessor = ({ svgLiteral }: Props) => {
-  const svg = svgLiteral?.replace(/"/g, "'");
+  //const svg = svgLiteral?.replace(/"/g, "'");
+  //   const [svg, setSvg] = useState<string | undefined>(
+  //     svgLiteral?.replace(/"/g, "'")
+  //   );
+  console.log(svgLiteral);
   return (
     <div className="h-3xl flex max-h-screen w-6/12 border-2 border-gray-800 p-4 text-justify">
-      {svg ? (
+      {svgLiteral ? (
         <div className="w-3xl h-4xl">
-          <img src={`data:image/svg+xml,${svg}`} />
+          {/* Dangerous html */}
+          <div dangerouslySetInnerHTML={{ __html: svgLiteral }} />
         </div>
       ) : (
         <div className="w-3xl h-4xl bg-white">
