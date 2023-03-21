@@ -51,11 +51,6 @@
       "name": "rp",
       "description": "Repite una serie de acciones una cantidad de veces determinada",
       "example": "rp 10 [go 10 gd 90]"
-    },
-    {
-      "name": "fn",
-      "description": "Define una función con un nombre, un parámetro y una serie de acciones",
-      "example": "fn cuadrado num\ngo num gd 90 go num gd 90 go num gd 90 go num gd 90\nend"
     }
   ]
 }
