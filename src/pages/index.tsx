@@ -20,17 +20,25 @@ const Home: NextPage = () => {
     const {
       data,
       status,
-    }: { data: { svg: string; hash?: string }; status: number } =
-      await axios.post(apiURL, {
-        text: values?.code,
-      });
+    }: {
+      data: { svg?: string; hash?: string; verified: boolean };
+      status: number;
+    } = await axios.post(apiURL, {
+      text: values?.code,
+    });
     // const {} = await axios.post(apiURL, {
     //   text: values?.code,
     // }); // as { status: number; data: { svg: string; hash?: string } };
     if (status === 200) {
       if (data) {
-        if (data?.svg) {
-          setSvg(data?.svg as string | undefined);
+        if (data?.verified == true) {
+          console.log("Verified");
+          if (data?.svg) {
+            setSvg(data?.svg as string | undefined);
+          }
+        } else {
+          console.log("Not verified");
+          alert("Input not valid");
         }
       }
     }
