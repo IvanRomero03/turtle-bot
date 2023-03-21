@@ -7,7 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { type Axios } from "axios";
 
-const apiURL = "https://turtle-backend.vercel.app/api/getSVG";
+const apiURL = "https://turtle-backend.vercel.app/api/";
 //const apiURL = "http://localhost:8000/";
 
 const Home: NextPage = () => {
